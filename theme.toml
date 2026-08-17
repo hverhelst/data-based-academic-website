@@ -1,0 +1,19 @@
+name = "Data-based Academic Website"
+license = "MIT"
+licenselink = "https://github.com/hverhelst/data-based-academic-website/blob/main/LICENSE"
+description = "A data-driven academic website: every section renders from a JSON file, entries are added by filling in a GitHub issue form, and the same data builds a LaTeX CV."
+homepage = "https://github.com/hverhelst/data-based-academic-website"
+demosite = "https://hverhelst.github.io/data-based-academic-website/"
+tags = ["academic", "cv", "resume", "research", "publications", "data-driven"]
+features = ["data-driven sections", "dark mode", "responsive", "multilingual", "LaTeX CV", "issue-form data entry"]
+min_version = "0.146.0"
+
+[author]
+  name = "Hugo Verhelst"
+  homepage = "https://hugoverhelst.nl"
+
+# Derived from the hugo-resume theme by Eddie Webb.
+[original]
+  name = "hugo-resume"
+  homepage = "https://github.com/eddiewebb/hugo-resume"
+  repo = "https://github.com/eddiewebb/hugo-resume"

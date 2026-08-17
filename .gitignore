@@ -1,0 +1,8 @@
+.DS_Store
+public/
+build/
+.hugo_build.lock
+__pycache__/
+exampleSite/public/
+exampleSite/.hugo_build.lock
+exampleSite/static/doc/CV.pdf
