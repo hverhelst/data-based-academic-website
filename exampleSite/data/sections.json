@@ -1,0 +1,52 @@
+[
+  {
+    "id": "news",
+    "inCV": false
+  },
+  {
+    "id": "education",
+    "cvLabel": "Education"
+  },
+  {
+    "id": "experience",
+    "cvLabel": "Experience"
+  },
+  {
+    "id": "awards",
+    "cvLabel": "Awards & Memberships"
+  },
+  {
+    "id": "publications",
+    "cvLabel": "Publications"
+  },
+  {
+    "id": "conferences",
+    "cvLabel": "Conference and seminar presentations"
+  },
+  {
+    "id": "software",
+    "cvLabel": "Software contributions"
+  },
+  {
+    "id": "teaching",
+    "cvLabel": "Teaching experience"
+  },
+  {
+    "id": "supervision",
+    "cvLabel": "Supervision & Committee work"
+  },
+  {
+    "id": "grants",
+    "style": "generic",
+    "label": "Grants & Funding",
+    "cvLabel": "Grants & Funding",
+    "featuredOnly": false,
+    "weight": 55,
+    "titleField": "title",
+    "subtitleField": "funder",
+    "bodyField": "description",
+    "dateField": "year",
+    "linkField": "url",
+    "detailsField": "details"
+  }
+]

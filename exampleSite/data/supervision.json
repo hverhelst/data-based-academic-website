@@ -1,0 +1,33 @@
+[
+  {
+    "name": "J. Okoro",
+    "university": "Northern Institute of Technology",
+    "degree": "MSc Applied Mathematics",
+    "title": "Adaptive refinement for shell buckling",
+    "level": "MSc",
+    "graduation": "2026-08-31",
+    "cosupervisors": "dr. L. Marchetti",
+    "role": "Daily supervisor",
+    "featured": true
+  },
+  {
+    "name": "S. Lindqvist",
+    "university": "Riverside University",
+    "degree": "PhD Applied Mathematics",
+    "title": "Phase-field fracture in thin structures",
+    "level": "PhD",
+    "graduation": "2027-12-01",
+    "role": "Co-promotor",
+    "featured": true
+  },
+  {
+    "name": "T. Alvarez",
+    "university": "Riverside University",
+    "degree": "BSc Mathematics",
+    "title": "A comparison of quadrature rules",
+    "level": "BSc",
+    "graduation": "2024-07-01",
+    "role": "Supervisor",
+    "featured": false
+  }
+]

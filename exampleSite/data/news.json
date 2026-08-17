@@ -1,0 +1,21 @@
+[
+  {
+    "date": "2026-05-04",
+    "title": "Paper accepted in the Journal of Applied Geometry",
+    "text": "Our work on adaptive refinement was accepted.",
+    "url": "https://doi.org/10.0000/example.2026",
+    "featured": true
+  },
+  {
+    "date": "2026-02-11",
+    "title": "Invited talk at the Riverside Seminar",
+    "text": "On the numerical analysis of wrinkling.",
+    "featured": true
+  },
+  {
+    "date": "2025-09-01",
+    "title": "Joined the Northern Institute of Technology",
+    "text": "Starting as an assistant professor.",
+    "featured": false
+  }
+]

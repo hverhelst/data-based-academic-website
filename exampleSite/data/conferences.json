@@ -1,0 +1,40 @@
+[
+  {
+    "name": "International Conference on Applied Geometry",
+    "location": "Highvalley",
+    "title": "Adaptive refinement for thin-shell analysis",
+    "start": "2026-06-15",
+    "end": "2026-06-19",
+    "url": "https://example.org/icag2026",
+    "details": "Plenary lecture opening the numerical-methods track.",
+    "featured": true,
+    "invited": true
+  },
+  {
+    "name": "Riverside Seminar Series",
+    "location": "Riverside",
+    "title": "On the numerical analysis of wrinkling",
+    "start": "2026-02-11",
+    "end": "",
+    "featured": true,
+    "invited": true
+  },
+  {
+    "name": "European Congress on Computational Mechanics",
+    "location": "Lisbon",
+    "title": "A phase-field model for thin structures",
+    "start": "2025-07-07",
+    "end": "2025-07-11",
+    "featured": true,
+    "invited": false
+  },
+  {
+    "name": "Workshop on Isogeometric Methods",
+    "location": "Alpine",
+    "title": "Quadrature for trimmed geometries",
+    "start": "2024-09-02",
+    "end": "2024-09-04",
+    "featured": false,
+    "invited": false
+  }
+]

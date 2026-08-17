@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  site:
+    name: Build the demo site
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.164.0
+    steps:
+      - uses: actions/checkout@v4
+
+      # A theme that ships data/ at its root would merge that data into every
+      # site using it, so a site that simply forgot a file would silently
+      # publish the demo's contents. All demo data lives in exampleSite/,
+      # which is not a component directory and is never mounted.
+      - name: No data/ at the theme root
+        run: test ! -d data
+
+      - name: Install Hugo CLI
+        run: |
+          wget -q -O "${{ runner.temp }}/hugo.deb" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i "${{ runner.temp }}/hugo.deb"
+
+      - name: Build
+        run: hugo --source exampleSite --themesDir ../.. --minify --destination public
+
+      # These three are the features most easily broken without failing a
+      # build: a 404 that never renders, a standalone page whose layout stopped
+      # resolving, and a section that exists only as data.
+      - name: The pages that a green build does not prove
+        run: |
+          cd exampleSite/public
+          grep -q "Error 404" 404.html
+          test -f defense/index.html
+          grep -q 'id=grants' index.html
+
+  data:
+    name: Data and issue forms
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet pyyaml jsonschema
+
+      - name: Validate the demo data
+        run: python scripts/validate_data.py --site-root exampleSite
+
+      - name: Round-trip every issue form
+        run: python scripts/selftest.py --site-root exampleSite
+
+      - name: The self-test restored what it touched
+        run: git diff --exit-code
+
+      # enable_issue_forms.py is what every site runs to vendor the forms, so
+      # a mistake in the manifest breaks all of them at once. Prove it copies
+      # cleanly and is idempotent before anyone downstream finds out.
+      - name: Vendoring the presets works and is idempotent
+        run: |
+          scratch="$(mktemp -d)"
+          mkdir -p "$scratch/data"
+          python scripts/enable_issue_forms.py --site-root "$scratch"
+          python scripts/enable_issue_forms.py --site-root "$scratch" --check
+
+  cv:
+    name: Build the CV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-luatex texlive-latex-extra texlive-science texlive-fonts-recommended \
+            poppler-utils
+
+      - name: Compile
+        run: bash compile_CV.sh
+        env:
+          SITE_ROOT: ${{ github.workspace }}/exampleSite
+
+      # The demo's Grants section has no LaTeX written for it anywhere; it
+      # reaches the PDF through the generic renderer alone. If that stops
+      # working the CV still builds, just quietly missing a section.
+      - name: A section declared only in data reaches the PDF
+        run: pdftotext -layout exampleSite/static/doc/CV.pdf - | grep -q "Grants & Funding"

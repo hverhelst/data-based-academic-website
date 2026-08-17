@@ -1,0 +1,78 @@
+[
+  {
+    "cite-key": "",
+    "entry-type": "thesis",
+    "description": {
+      "title": "Adaptive analysis of thin structures",
+      "author": "A. Rivera",
+      "date": "2024-01-18",
+      "url": "https://doi.org/10.0000/thesis",
+      "image": "media/thesis.png",
+      "imageCaption": "Cover art: a wrinkled membrane.",
+      "school": "Riverside University",
+      "degree": "Doctor of Philosophy",
+      "abstract": "A study of adaptive discretisations for thin structures.",
+      "year": "2024"
+    },
+    "featured": true
+  },
+  {
+    "cite-key": "Rivera2026",
+    "entry-type": "article",
+    "description": {
+      "author": "A. Rivera and R. Chen",
+      "title": "Adaptive refinement for shells",
+      "journal": "Journal of Applied Geometry",
+      "volume": "12",
+      "issue": "3",
+      "pages": "215--240",
+      "year": "2026",
+      "url": "https://doi.org/10.0000/example.2026",
+      "image": "media/rivera2026.png",
+      "imageCaption": "Refined mesh around a fold.",
+      "abstract": "We propose an adaptive scheme."
+    },
+    "featured": true
+  },
+  {
+    "cite-key": "Rivera2025",
+    "entry-type": "inproceeding",
+    "description": {
+      "author": "A. Rivera and M. Bianchi",
+      "title": "Quadrature for trimmed geometries",
+      "booktitle": "Proceedings of the Workshop on Isogeometric Methods",
+      "year": "2025",
+      "pages": "44--51",
+      "url": "https://doi.org/10.0000/proc.2025"
+    },
+    "featured": true
+  },
+  {
+    "cite-key": "Rivera2024",
+    "entry-type": "incollection",
+    "description": {
+      "author": "A. Rivera",
+      "title": "Thin-shell formulations",
+      "booktitle": "Advances in Computational Mechanics",
+      "editor": "L. Marchetti",
+      "series": "Lecture Notes in Applied Mathematics",
+      "publisher": "Riverside Press",
+      "year": "2024",
+      "pages": "101--130",
+      "url": "https://doi.org/10.0000/chapter.2024"
+    },
+    "featured": false
+  },
+  {
+    "cite-key": "Rivera2026a",
+    "entry-type": "unpublished",
+    "description": {
+      "author": "A. Rivera and S. Lindqvist",
+      "title": "A phase-field model for thin structures",
+      "year": "2026",
+      "eprint": "arXiv:2601.00001",
+      "url": "https://arxiv.org/abs/2601.00001"
+    },
+    "featured": true
+  }
+]

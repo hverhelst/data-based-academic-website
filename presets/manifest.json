@@ -1,0 +1,51 @@
+{
+  "$comment": "Files enable_issue_forms.py copies into a site, and the only files it is ever allowed to overwrite or remove. Anything a site adds outside this list — its own forms for sections it invented, its own workflows — is left alone.",
+  "groups": [
+    {
+      "name": "issue-forms",
+      "source": "issue-forms",
+      "target": ".github/ISSUE_TEMPLATE",
+      "files": [
+        "award.yml",
+        "conference.yml",
+        "config.yml",
+        "education.yml",
+        "experience.yml",
+        "membership.yml",
+        "news.yml",
+        "publication-bibtex.yml",
+        "publication.yml",
+        "software.yml",
+        "supervision.yml",
+        "teaching.yml"
+      ]
+    },
+    {
+      "name": "schemas",
+      "source": "schemas",
+      "target": ".github/schemas",
+      "files": [
+        "awards.schema.json",
+        "conferences.schema.json",
+        "education.schema.json",
+        "experience.schema.json",
+        "mydata.schema.json",
+        "news.schema.json",
+        "publications.schema.json",
+        "sections.schema.json",
+        "software.schema.json",
+        "supervision.schema.json",
+        "teaching.schema.json"
+      ]
+    },
+    {
+      "name": "workflows",
+      "source": "workflows",
+      "target": ".github/workflows",
+      "files": [
+        "add-entry.yml",
+        "data-checks.yml"
+      ]
+    }
+  ]
+}

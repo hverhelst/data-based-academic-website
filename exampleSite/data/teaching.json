@@ -1,0 +1,35 @@
+[
+  {
+    "degree": "BSc Applied Mathematics",
+    "level": "BSc",
+    "course": "Numerical Methods I",
+    "university": "Northern Institute of Technology",
+    "start": "2025-09-01",
+    "end": "2026-07-01",
+    "duration": "yearly",
+    "role": "Lecturer",
+    "featured": true
+  },
+  {
+    "degree": "MSc Applied Mathematics",
+    "level": "MSc",
+    "course": "Finite Element Analysis",
+    "university": "Riverside University",
+    "start": "2022-02-01",
+    "end": "2024-06-30",
+    "role": "Teaching assistant",
+    "featured": true,
+    "duration": "2 quarters"
+  },
+  {
+    "degree": "PhD programme",
+    "level": "PhD",
+    "course": "Advanced Topics in Geometry",
+    "university": "Riverside University",
+    "start": "2023-01-01",
+    "end": "2023-03-31",
+    "role": "Guest lecturer",
+    "featured": false,
+    "duration": "1 quarter"
+  }
+]

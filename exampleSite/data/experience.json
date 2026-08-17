@@ -1,0 +1,43 @@
+[
+  {
+    "type": "professional",
+    "role": "Assistant Professor",
+    "institute": "Northern Institute of Technology",
+    "department": "Department of Applied Mathematics",
+    "location": "Riverside",
+    "url": "https://example.edu",
+    "start": "2025-09-01",
+    "end": "",
+    "featured": true
+  },
+  {
+    "type": "professional",
+    "role": "Postdoctoral Researcher",
+    "institute": "Riverside University",
+    "location": "Riverside",
+    "start": "2024-02-01",
+    "end": "2025-08-31",
+    "featured": true,
+    "department": "Institute for Computational Science"
+  },
+  {
+    "type": "visit",
+    "role": "Visiting Researcher",
+    "institute": "Alpine University",
+    "location": "Highvalley",
+    "visiting": "prof. dr. M. Bianchi",
+    "start": "2023-03-01",
+    "end": "2023-05-31",
+    "featured": true,
+    "duration": "3 months"
+  },
+  {
+    "type": "voluntary",
+    "role": "Session Chair",
+    "organization": "Applied Geometry Society",
+    "location": "Riverside",
+    "start": "2024-06-01",
+    "end": "2024-06-05",
+    "featured": false
+  }
+]

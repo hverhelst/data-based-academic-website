@@ -1,0 +1,33 @@
+[
+  {
+    "type": "award",
+    "title": "Best Student Paper Award",
+    "location": "International Conference on Applied Geometry",
+    "year": "2023",
+    "featured": true
+  },
+  {
+    "type": "award",
+    "title": "Faculty Teaching Prize",
+    "location": "Northern Institute of Technology",
+    "year": "2026",
+    "featured": false
+  },
+  {
+    "type": "membership",
+    "organization": "Applied Geometry Society",
+    "member": "Member",
+    "url": "https://example.org/society",
+    "start": "2021-01-01",
+    "end": "",
+    "featured": true
+  },
+  {
+    "type": "membership",
+    "organization": "Society for Industrial Mathematics",
+    "member": "Student member",
+    "start": "2019-01-01",
+    "end": "2024-01-01",
+    "featured": false
+  }
+]

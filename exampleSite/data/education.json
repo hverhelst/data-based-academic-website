@@ -1,0 +1,32 @@
+[
+  {
+    "school": "Riverside University",
+    "schoollink": "https://example.edu",
+    "degree": "Doctor of Philosophy",
+    "major": "",
+    "notes": "Cum Laude",
+    "start": "2019-09-01",
+    "end": "2024-01-18",
+    "thesis": "Adaptive analysis of thin structures",
+    "thesislink": "https://doi.org/10.0000/thesis",
+    "supervisors": "prof. dr. R. Chen",
+    "featured": true
+  },
+  {
+    "school": "Riverside University",
+    "degree": "Master of Science",
+    "major": "Applied Mathematics",
+    "notes": "with distinction",
+    "start": "2017-09-01",
+    "end": "2019-08-31",
+    "featured": true
+  },
+  {
+    "school": "Southern Polytechnic",
+    "degree": "Bachelor of Science",
+    "major": "Mathematics",
+    "start": "2014-09-01",
+    "end": "2017-07-15",
+    "featured": false
+  }
+]

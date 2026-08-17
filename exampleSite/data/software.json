@@ -1,0 +1,17 @@
+[
+  {
+    "name": "meshkit",
+    "role": "Lead developer",
+    "description": "An adaptive meshing library for thin-shell analysis.",
+    "url": "https://github.com/example/meshkit",
+    "doi": "10.0000/meshkit",
+    "featured": true
+  },
+  {
+    "name": "shellsolve",
+    "role": "Contributor",
+    "description": "Nonlinear shell solver.",
+    "url": "https://github.com/example/shellsolve",
+    "featured": false
+  }
+]

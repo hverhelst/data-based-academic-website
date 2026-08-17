@@ -1,0 +1,56 @@
+# Demo site for the Data-based Academic Website theme.
+#
+# Build it from the theme's root with:
+#     hugo --source exampleSite --themesDir ../..
+#
+# Everything below is site-owned. The layouts, translations, CSS and the
+# section renderers all come from the theme; this file plus data/ is the whole
+# of what a site actually has to provide.
+theme = "data-based-academic-website"
+baseURL = "https://example.org/"
+locale = "en"
+title = "Alex Rivera"
+dateFormat = "January 2, 2006"
+disableKinds = ["taxonomy", "term"]
+
+[params]
+address = "Riverside, Elsewhere"
+email = "a.rivera@example.edu"
+firstName = "Alex"
+lastName = "Rivera"
+profileImage = "img/avatar.svg"
+showSocializations = true
+CVlink = "doc/CV.pdf"
+
+# Sections live in data/sections.json, not here — the LaTeX CV reads the same
+# file, which is what stops the site and the PDF from drifting apart.
+
+# Pages that are reachable but deliberately not part of the section flow.
+# Drop this block and /defense/ is still served, just unlinked — which is the
+# usual reason for having such a page at all.
+[[params.extraPages]]
+label = "Defense"
+url = "/defense/"
+
+[[params.handles]]
+name = "GitHub"
+link = "https://github.com/example"
+icon = "github"
+
+[[params.handles]]
+name = "ORCID"
+link = "https://orcid.org/0000-0002-1825-0097"
+icon = "orcid"
+
+[[params.handles]]
+name = "LinkedIn"
+link = "https://www.linkedin.com/in/example/"
+icon = "linkedin-in"
+
+[params.meta]
+description = "Demo site for the Data-based Academic Website theme"
+author = "Alex Rivera"
+favicon = false
+
+[markup.goldmark.renderer]
+unsafe = true
