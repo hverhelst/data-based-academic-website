@@ -16,7 +16,7 @@ jobs:
     env:
       HUGO_VERSION: 0.164.0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # A theme that ships data/ at its root would merge that data into every
       # site using it, so a site that simply forgot a file would silently
@@ -48,7 +48,7 @@ jobs:
     name: Data and issue forms
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -77,7 +77,7 @@ jobs:
     name: Build the CV
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install TeX Live
         run: |
           sudo apt-get update
