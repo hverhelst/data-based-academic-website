@@ -1,0 +1,59 @@
+{{/*
+  Normalises the site's section list into a slice of fully-populated dicts, so
+  every other template can read a section's settings without repeating defaults.
+
+  The list is read from data/sections.json when present, and otherwise from
+  params.sections. Keeping both paths alive matters for more than backwards
+  compatibility: data/sections.json is also what the LaTeX CV reads, and a
+  site that has not migrated yet must keep rendering exactly as before.
+
+  Entries may be a bare string ("news") or a table ({"id": "news", ...}).
+
+  Returns a slice sorted by weight. Call through partialCached — the result
+  depends only on site config, so building it once per site is enough.
+*/}}
+{{ $entries := hugo.Data.sections | default site.Params.sections | default slice }}
+
+{{ $out := slice }}
+{{ range $i, $e := $entries }}
+  {{ $e = cond (reflect.IsMap $e) $e (dict "id" $e) }}
+  {{ $id := $e.id }}
+  {{ if not $id }}
+    {{ errorf "sections registry: entry %d has no id: %v" $i $e }}
+  {{ end }}
+
+  {{/* i18n returns "" for an unknown key, so fall back to a humanised id
+       rather than rendering an empty heading. */}}
+  {{ $label := or (i18n $id) (humanize $id) }}
+
+  {{ $defaults := dict
+      "id"            $id
+      "data"          $id
+      "style"         $id
+      "label"         $label
+      "enable"        true
+      "featuredOnly"  true
+      "homepageLimit" 0
+      "weight"        (mul (add $i 1) 10)
+      "inCV"          true
+      "titleField"    "title"
+      "subtitleField" "subtitle"
+      "bodyField"     "description"
+      "dateField"     "date"
+      "dateFormat"    "2006"
+      "linkField"     "url"
+      "detailsField"  "details"
+      "groupField"    ""
+      "sortField"     ""
+      "sortReverse"   true
+  }}
+
+  {{/* merge takes the right-hand map as the winner, so explicit keys override
+       the defaults while absent keys keep them. */}}
+  {{ $merged := merge $defaults $e }}
+  {{ if $merged.enable }}
+    {{ $out = $out | append $merged }}
+  {{ end }}
+{{ end }}
+
+{{ return (sort $out "weight") }}

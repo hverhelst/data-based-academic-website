@@ -1,0 +1,88 @@
+{{/*
+  The fallback renderer: turns any array of flat records into the same
+  resume-item markup the built-in presets use, driven entirely by the field
+  names declared in the section's registry entry.
+
+  This is what makes a brand-new section possible without writing a template.
+  Drop data/grants.json next to an entry in data/sections.json and the section
+  renders; write layouts/partials/sections/grants.html later only if the
+  generic shape is not good enough.
+
+  Every field is looked up by name and skipped when absent, so a record that
+  carries only a title still renders cleanly.
+
+  Expects: .section (a registry entry), .pages (the records).
+*/}}
+{{ $s := .section }}
+{{ $records := .pages | default slice }}
+
+{{ with $s.sortField }}
+  {{ $records = sort $records . (cond $s.sortReverse "desc" "asc") }}
+{{ end }}
+
+{{/* With no groupField every record lands in one unnamed group, so the same
+     loop below handles grouped and ungrouped sections alike. */}}
+{{ $groups := slice (dict "name" "" "records" $records) }}
+{{ with $s.groupField }}
+  {{ $field := . }}
+  {{ $names := slice }}
+  {{ range $records }}
+    {{ $v := index . $field }}
+    {{ if and $v (not (in $names $v)) }}{{ $names = $names | append $v }}{{ end }}
+  {{ end }}
+  {{ $grouped := slice }}
+  {{ range $names }}
+    {{ $grouped = $grouped | append (dict "name" . "records" (where $records $field .)) }}
+  {{ end }}
+  {{/* Records missing the grouping field would silently vanish otherwise. */}}
+  {{ $ungrouped := where $records $field nil }}
+  {{ with $ungrouped }}
+    {{ $grouped = $grouped | append (dict "name" "" "records" .) }}
+  {{ end }}
+  {{ $groups = $grouped }}
+{{ end }}
+
+<div class="my-auto">
+  {{ range $groups }}
+    {{ with .name }}<h3>{{ humanize . }}</h3>{{ end }}
+    {{ range .records }}
+      {{ $r := . }}
+      {{ $title := index $r $s.titleField }}
+      {{ $subtitle := index $r $s.subtitleField }}
+      {{ $body := index $r $s.bodyField }}
+      {{ $link := index $r $s.linkField }}
+      {{ $date := index $r $s.dateField }}
+      <div class="resume-item d-flex flex-column flex-md-row mb-5">
+        <div class="resume-content me-auto">
+          {{ with $title }}
+            <h4 class="mb-0">
+              {{ if $link }}<a href="{{ $link }}">{{ . | markdownify }}</a>{{ else }}{{ . | markdownify }}{{ end }}
+            </h4>
+          {{ end }}
+          {{ with $subtitle }}<div class="subheading mb-0">{{ . | markdownify }}</div>{{ end }}
+          {{ with $body }}<div>{{ . | markdownify }}</div>{{ end }}
+        </div>
+        {{ with $date }}
+          {{/* Dates arrive as full ISO strings ("2024-01-18") or as bare years
+               ("2024"). time.AsTime raises on the latter rather than returning
+               nil, so go through try and print the raw value when it fails —
+               a bare year is already the thing we would have formatted it to. */}}
+          {{ $formatted := . }}
+          {{ with try (time.AsTime .) }}
+            {{ with .Value }}{{ $formatted = time.Format $s.dateFormat . }}{{ end }}
+          {{ end }}
+          <div class="resume-date text-md-end">
+            <span class="text-primary">{{ $formatted }}</span>
+          </div>
+        {{ end }}
+      </div>
+      {{ partial "recordDetails.html" (dict
+          "title" $title
+          "url" $link
+          "text" (index $r $s.detailsField)
+          "image" (index $r "image")
+          "imageCaption" (index $r "imageCaption"))
+      }}
+    {{ end }}
+  {{ end }}
+</div>

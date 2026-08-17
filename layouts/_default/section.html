@@ -1,10 +1,14 @@
 {{ define "main" }}
 {{ partial "breadcrumbs" . }}
-{{ $data := index hugo.Data .Section }}
+{{/* Find this section's registry entry. A content section that is not
+     registered — content/blog/, say — has no data file behind it, so fall
+     through to its own content rather than indexing a nil map. */}}
+{{ $s := "" }}
+{{ range partialCached "sections/registry.html" . }}{{ if eq .id $.Section }}{{ $s = . }}{{ end }}{{ end }}
 <section class="resume-section p-3 p-lg-5 d-flex flex-column">
   <div class="my-auto">
     <h1 id="{{ urlize .Title }}">{{ .Title }}</h1>
-    {{ partial (printf "%sSummary.html" .Section) (dict "pages" $data) }}
+    {{ if $s }}{{ partial "sections/render.html" (dict "section" $s "pages" (index hugo.Data $s.data | default slice)) }}{{ else }}{{ .Content }}{{ end }}
   </div>
 </section>
 {{ end }}

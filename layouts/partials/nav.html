@@ -11,12 +11,22 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     {{ $page := . }}
     <ul class="navbar-nav">
+      {{/* Off the homepage these are cross-page links, so they need the site
+           root prefixed. relURL keeps them correct when the site is served
+           from a subdirectory, where a bare "/" would escape to the wrong
+           origin — most visibly on the 404 page. */}}
+      {{ $root := "/" | relURL }}
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="{{ if $page.IsHome }}#about{{ else }}/#about{{ end }}">{{ i18n "about" }}</a>
+        <a class="nav-link js-scroll-trigger" href="{{ if $page.IsHome }}#about{{ else }}{{ $root }}#about{{ end }}">{{ i18n "about" }}</a>
       </li>
-      {{ range .Site.Params.sections }}
+      {{ range partialCached "sections/registry.html" $page }}
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="{{ if $page.IsHome }}#{{ . }}{{ else }}/#{{ . }}{{ end }}">{{ . | i18n }}</a>
+        <a class="nav-link js-scroll-trigger" href="{{ if $page.IsHome }}#{{ .id }}{{ else }}{{ $root }}#{{ .id }}{{ end }}">{{ .label }}</a>
+      </li>
+      {{ end }}
+      {{ range site.Params.extraPages }}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ .url | relURL }}">{{ .label }}</a>
       </li>
       {{ end }}
       {{ if .Site.Params.CVlink}}

@@ -1,0 +1,35 @@
+{{/*
+  One homepage section: heading, the featured records, and a link through to
+  the full listing.
+
+  Expects: .section (a registry entry from sections/registry.html).
+
+  The content page is optional. A site that registers a section without adding
+  content/<id>/_index.md still gets the block; only the hyperlinks are dropped,
+  because there is nothing to link to.
+*/}}
+{{ $s := .section }}
+{{ $secID := $s.id }}
+{{ $page := site.GetPage (printf "/%s" $s.data) }}
+{{ $data := index hugo.Data $s.data | default slice }}
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="{{ $secID }}">
+  <div class="my-auto">
+    <div class=" pb-2 pt-3">
+      <h2>{{ if $page }}<a href="{{ $page.Permalink }}">{{ $s.label }}</a>{{ else }}{{ $s.label }}{{ end }}</h2>
+    </div>
+    {{ $featured := cond $s.featuredOnly (where $data "featured" true) $data }}
+    {{ if $s.homepageLimit }}{{ $featured = first $s.homepageLimit $featured }}{{ end }}
+    {{ partial "sections/render.html" (dict "section" $s "pages" $featured) }}
+    </div>
+  {{ if and $page (gt (len $data) (len $featured)) }}
+    <div class="my-auto">
+      {{/* The section labels are a mix of plurals ("Publications"), mass nouns
+           ("Software", "Education") and phrases ("Awards, Honours and
+           Memberships"), so lowercasing the label reads correctly for all of
+           them — unlike `pluralize`, which just appended an "s". */}}
+      <p class="section-more">
+        <a href="{{ $page.Permalink }}">See all {{ $s.label | lower }} &rarr;</a>
+      </p>
+    </div>
+  {{ end }}
+</section>

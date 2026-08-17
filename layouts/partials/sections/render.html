@@ -1,0 +1,41 @@
+{{/*
+  Picks the renderer for one section and calls it.
+
+  Resolution order:
+    1. partials/sections/<style>.html   — the built-in presets, and the name a
+                                          site uses to override or add one
+    2. partials/<style>Summary.html     — the pre-extraction naming scheme, so
+                                          a site that already carries a custom
+                                          partial keeps working after upgrading
+    3. partials/sections/generic.html   — the config-driven fallback
+
+  templates.Exists searches project layouts as well as the theme's, which is
+  what lets a site add layouts/partials/sections/grants.html and have it taken
+  up with no configuration change at all.
+
+  Expects: .section (a registry entry), .pages (the records to render).
+*/}}
+{{ $style := .section.style }}
+{{ $candidates := slice
+    (printf "sections/%s.html" $style)
+    (printf "%sSummary.html" $style)
+    "sections/generic.html"
+}}
+
+{{ $chosen := "" }}
+{{ range $candidates }}
+  {{ if not $chosen }}
+    {{/* Hugo 0.146 renamed the partials directory to _partials. Legacy layout
+         trees still resolve, but which spelling templates.Exists answers to is
+         not worth betting on, so ask for both. */}}
+    {{ if or (templates.Exists (printf "partials/%s" .)) (templates.Exists (printf "_partials/%s" .)) }}
+      {{ $chosen = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if $chosen }}
+  {{ partial $chosen . }}
+{{ else }}
+  {{ errorf "sections: no renderer found for section %q (style %q)" .section.id $style }}
+{{ end }}
