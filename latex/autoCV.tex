@@ -419,9 +419,11 @@
 				pubCount = pubCount - 1
 			end
 
-			tex.print('\\end{longtable}')
-			tex.print('\\end{centering}')
-
+			-- Only close the table if one was opened; see above.
+			if not needsHeading then
+				tex.print('\\end{longtable}')
+				tex.print('\\end{centering}')
+			end
 		end
 	end
 
@@ -604,8 +606,11 @@
 					tex.print(columnOne .. ' & ' .. thisContents .. '\\\\')
 				end
 			end
-			tex.print('\\end{longtable}')
-			tex.print('\\end{centering}')
+			-- Only close the table if one was opened; see above.
+			if not needsHeading then
+				tex.print('\\end{longtable}')
+				tex.print('\\end{centering}')
+			end
 		end
 	end
 
@@ -672,8 +677,16 @@
 
 				tex.print(columnOne .. ' & ' .. thisContents .. ' \\\\')
 			end
-			tex.print('\\end{longtable}')
-			tex.print('\\end{centering}')
+			-- Only close the table if one was opened. A group with no entries
+			-- never opens a longtable, and closing one that was never opened
+			-- aborts the run -- so a CV whose publications happen not to span
+			-- every entry type would fail to build at all. (No control
+			-- sequences in this comment: luacode scans the body textually for
+			-- its terminator, so a stray one here ends the environment early.)
+			if not needsHeading then
+				tex.print('\\end{longtable}')
+				tex.print('\\end{centering}')
+			end
 		end
 	end
 
@@ -752,8 +765,16 @@
 
 				tex.print(columnOne .. ' & ' .. thisContents .. ' \\\\')
 			end
-			tex.print('\\end{longtable}')
-			tex.print('\\end{centering}')
+			-- Only close the table if one was opened. A group with no entries
+			-- never opens a longtable, and closing one that was never opened
+			-- aborts the run -- so a CV whose publications happen not to span
+			-- every entry type would fail to build at all. (No control
+			-- sequences in this comment: luacode scans the body textually for
+			-- its terminator, so a stray one here ends the environment early.)
+			if not needsHeading then
+				tex.print('\\end{longtable}')
+				tex.print('\\end{centering}')
+			end
 		end
 	end
 
@@ -839,8 +860,11 @@
 					error("Unknown award type " .. awardState["type"])
 				end
 			end
-			tex.print('\\end{longtable}')
-			tex.print('\\end{centering}')
+			-- Only close the table if one was opened; see above.
+			if not needsHeading then
+				tex.print('\\end{longtable}')
+				tex.print('\\end{centering}')
+			end
 		end
 	end
 
@@ -1012,8 +1036,16 @@
 
 				tex.print(columnOne .. ' & ' .. thisContents .. ' \\\\')
 			end
-			tex.print('\\end{longtable}')
-			tex.print('\\end{centering}')
+			-- Only close the table if one was opened. A group with no entries
+			-- never opens a longtable, and closing one that was never opened
+			-- aborts the run -- so a CV whose publications happen not to span
+			-- every entry type would fail to build at all. (No control
+			-- sequences in this comment: luacode scans the body textually for
+			-- its terminator, so a stray one here ends the environment early.)
+			if not needsHeading then
+				tex.print('\\end{longtable}')
+				tex.print('\\end{centering}')
+			end
 		end
 	end
 
@@ -1048,8 +1080,15 @@
 			section.data     = section.data or section.id
 			section.style    = section.style or section.id
 			section.cvLabel  = section.cvLabel or section.label or firstToUpper(section.id)
-			local render = renderers[section.style] or prettyprintGeneric
-			render(readJson('data/' .. section.data .. '.json'), section)
+			-- A declared section whose data file is absent or empty is skipped
+			-- rather than printed as a bare heading with nothing under it. It
+			-- also keeps a freshly scaffolded site -- every data file still []
+			-- -- building a valid, if short, CV.
+			local records = readJsonOptional('data/' .. section.data .. '.json')
+			if records ~= nil and #records > 0 then
+				local render = renderers[section.style] or prettyprintGeneric
+				render(records, section)
+			end
 		end
 	end
 \end{luacode}
