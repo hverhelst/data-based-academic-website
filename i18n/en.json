@@ -2,8 +2,8 @@
     "about": "About",
     "blog": "Blog",
     "contact": "Contact",
-    "contributions":"Open Source",
-    "CV":"Curriculum Vitae",
+    "contributions": "Open Source",
+    "CV": "Curriculum Vitae",
     "education": "Education",
     "experience": "Experience",
     "news": "News",
@@ -14,5 +14,10 @@
     "skills": "Skills",
     "socialization": "Socialization",
     "software": "Software",
-    "supervision": "Supervision & Committee work"
+    "supervision": "Supervision & Committee work",
+    "contactName": "Your name",
+    "contactEmail": "Your email",
+    "contactEmailHelp": "So I can reply.",
+    "contactMessage": "Message",
+    "contactSend": "Send"
 }

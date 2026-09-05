@@ -4,11 +4,15 @@
     "certifications": "Certificaties",
     "creations": "Creaties",
     "contact": "Contact",
-    "contributions":"Open Source",
+    "contributions": "Open Source",
     "education": "Educatie",
     "experience": "Ervaring",
     "publications": "Presentaties",
     "skills": "Vaardigheden",
-    "socialization": "Socialisatie"
+    "socialization": "Socialisatie",
+    "contactName": "Uw naam",
+    "contactEmail": "Uw e-mailadres",
+    "contactEmailHelp": "Zodat ik kan antwoorden.",
+    "contactMessage": "Bericht",
+    "contactSend": "Versturen"
 }
-

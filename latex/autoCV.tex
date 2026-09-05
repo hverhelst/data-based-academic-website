@@ -225,7 +225,11 @@
 	if not isEmpty(my["address3"]) then
 		tex.print(prepareString(my["address3"]) .. '\\\\')
 	end
-	tex.print('\\href{mailto:' .. prepareUrl(my["email"]) .. '}{' .. prepareString(my["email"]) .. '} \\\\')
+	-- Optional: a site that publishes a contact form instead of an address
+	-- omits "email" from mydata.json, and the CV simply carries the website.
+	if not isEmpty(my["email"]) then
+		tex.print('\\href{mailto:' .. prepareUrl(my["email"]) .. '}{' .. prepareString(my["email"]) .. '} \\\\')
+	end
 	tex.print('\\href{' .. prepareUrl(my["website"]) .. '}{' .. prepareString(my["website"]) .. '} \\\\')
 	tex.print('\\end{center}')
 

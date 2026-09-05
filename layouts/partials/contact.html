@@ -1,0 +1,86 @@
+{{/*
+  A contact form for a statically hosted site.
+
+  GitHub Pages runs no server-side code, so the submission has to go to a
+  third-party form service. Two are supported; both take the message and mail
+  it on, and neither needs your address to appear anywhere in the page:
+
+    [params.contact]
+    provider = "web3forms"   # or "formspree"
+    key      = "..."         # Web3Forms access key, or Formspree form id
+    subject  = "Message from your site"   # optional
+    redirect = "/contact/thanks/"         # optional, else the provider's page
+    note     = "..."                      # optional line above the form
+
+  Plain HTML POST, no JavaScript: the form works with scripts disabled, and
+  there is no API key to leak because neither provider's public identifier is
+  a secret — it only says where a message goes, not who receives it.
+
+  Spam: both providers offer a honeypot field, filled in by bots and hidden
+  from people. It is wired up below. Turn on the provider's captcha too if the
+  address starts attracting volume.
+*/}}
+{{ $c := site.Params.contact }}
+{{ $provider := lower (default "" $c.provider) }}
+{{ $key := default "" $c.key }}
+
+{{ if not $key }}
+  {{/* A missing key would otherwise render a form that silently posts nowhere,
+       which is worse than saying so. Warn at build time as well, because a
+       page nobody visits in preview would not show this notice to anyone. */}}
+  {{ warnf "params.contact.key is not set — the contact form will not be rendered. Add the key from your form provider." }}
+  <div class="alert alert-warning" role="alert">
+    The contact form is not configured yet. Set <code>params.contact.key</code>
+    in the site configuration.
+  </div>
+{{ else }}
+  {{ $action := "" }}
+  {{ if eq $provider "web3forms" }}
+    {{ $action = "https://api.web3forms.com/submit" }}
+  {{ else if eq $provider "formspree" }}
+    {{ $action = printf "https://formspree.io/f/%s" $key }}
+  {{ else }}
+    {{ errorf "params.contact.provider is %q — expected \"web3forms\" or \"formspree\"" $provider }}
+  {{ end }}
+
+  {{ with $c.note }}<p class="contact-note">{{ . | markdownify }}</p>{{ end }}
+
+  <form class="contact-form" action="{{ $action }}" method="POST">
+    {{/* Provider-specific plumbing. The field names differ; the meaning does
+         not, so everything below this block is shared. */}}
+    {{ if eq $provider "web3forms" }}
+      <input type="hidden" name="access_key" value="{{ $key }}">
+      {{ with $c.subject }}<input type="hidden" name="subject" value="{{ . }}">{{ end }}
+      {{ with $c.redirect }}<input type="hidden" name="redirect" value="{{ . | absURL }}">{{ end }}
+      <input type="checkbox" name="botcheck" class="contact-hp" tabindex="-1" autocomplete="off">
+    {{ else }}
+      {{ with $c.subject }}<input type="hidden" name="_subject" value="{{ . }}">{{ end }}
+      {{ with $c.redirect }}<input type="hidden" name="_next" value="{{ . | absURL }}">{{ end }}
+      <input type="text" name="_gotcha" class="contact-hp" tabindex="-1" autocomplete="off">
+    {{ end }}
+
+    <div class="mb-3">
+      <label class="form-label" for="contact-name">{{ i18n "contactName" | default "Your name" }}</label>
+      <input class="form-control" type="text" id="contact-name" name="name" required autocomplete="name">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="contact-email">{{ i18n "contactEmail" | default "Your email" }}</label>
+      <input class="form-control" type="email" id="contact-email" name="email" required autocomplete="email">
+      <div class="form-text">{{ i18n "contactEmailHelp" | default "So I can reply." }}</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="contact-message">{{ i18n "contactMessage" | default "Message" }}</label>
+      <textarea class="form-control" id="contact-message" name="message" rows="7" required></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">{{ i18n "contactSend" | default "Send" }}</button>
+  </form>
+
+  <style>
+    /* Off-screen rather than display:none — a bot reading the stylesheet can
+       spot the latter, and some fill hidden fields regardless. Kept out of the
+       tab order and hidden from assistive technology by the attributes above. */
+    .contact-hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+    .contact-form { max-width: 40rem; }
+    .contact-note { max-width: 40rem; }
+  </style>
+{{ end }}

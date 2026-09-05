@@ -92,6 +92,17 @@ what the `data-checks` workflow runs, so a form that has fallen behind its
 schema fails a check instead of failing quietly at the moment you use it. Forms
 you write for your own sections are outside the manifest and are never touched.
 
+## Contact form
+
+A site on GitHub Pages cannot process a form itself, so the theme wires one up to
+Web3Forms or Formspree — configured in `[params.contact]`, placed with
+`{{< contactform >}}`, and rendered without JavaScript. The provider key says
+where a message goes, not who receives it, so it is safe in a public repository.
+
+`params.email` and `mydata.json`'s `email` are both optional: omit them and the
+homepage links to the contact page instead, and the CV carries only your website.
+See [docs/contact-form.md](docs/contact-form.md).
+
 ## Demo
 
 `exampleSite/` is a complete site on fictional data, covering every preset and

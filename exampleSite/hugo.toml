@@ -15,7 +15,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
 address = "Riverside, Elsewhere"
-email = "a.rivera@example.edu"
+# email is deliberately absent: the contact form replaces it.
 firstName = "Alex"
 lastName = "Rivera"
 profileImage = "img/avatar.svg"
@@ -25,9 +25,22 @@ CVlink = "doc/CV.pdf"
 # Sections live in data/sections.json, not here — the LaTeX CV reads the same
 # file, which is what stops the site and the PDF from drifting apart.
 
+# A contact form instead of a published address. The key identifies where a
+# message goes, not who receives it, so it is safe in a public repository.
+# Swap provider to "formspree" and put the form id in key to use that instead.
+[params.contact]
+provider = "web3forms"
+key = "00000000-0000-0000-0000-000000000000"   # demo placeholder, not a real key
+subject = "Message from the demo site"
+note = "I read everything; replies may take a few days."
+
 # Pages that are reachable but deliberately not part of the section flow.
 # Drop this block and /defense/ is still served, just unlinked — which is the
 # usual reason for having such a page at all.
+[[params.extraPages]]
+label = "Contact"
+url = "/contact/"
+
 [[params.extraPages]]
 label = "Defense"
 url = "/defense/"
