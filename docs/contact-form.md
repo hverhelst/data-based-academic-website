@@ -40,6 +40,37 @@ third-party service that mails the message on. Two are supported.
    url = "/contact/"
    ```
 
+## Keeping the key out of the repository
+
+You can, and it is worth doing — but not for the reason it first appears.
+
+The key **has to be in the deployed HTML**: the visitor's browser is what posts
+to the provider, so the key travels with the page and anyone can read it in View
+Source. Moving it out of `hugo.toml` does not hide it from people. What it does
+is keep it out of git history, so that rotating the key actually retires the old
+one instead of leaving it readable in every past commit.
+
+Hugo reads any parameter from the environment, so leave `key` empty and inject
+it at build time:
+
+```yaml
+# .github/workflows/hugo.yml
+- name: Build with Hugo
+  env:
+    HUGO_PARAMS_CONTACT_KEY: ${{ secrets.WEB3FORMS_KEY }}
+  run: hugo --minify
+```
+
+Add the key as a repository secret, and preview locally with:
+
+```bash
+HUGO_PARAMS_CONTACT_KEY=your-key hugo server
+```
+
+Two consequences worth knowing. Pull-request builds from forks get no secrets,
+so those builds render no form — harmless for a build check. And a build without
+the key warns rather than failing, so it will not block a deploy.
+
 ## Dropping the published address
 
 `params.email` and the `email` key in `data/mydata.json` are both optional. Omit
@@ -48,8 +79,12 @@ be, and the generated CV carries only the website.
 
 ## What this does and does not protect
 
-The key in the page identifies **where a message goes, not who receives it**, so
-it is safe in a public repository — that is the whole point of the arrangement.
+The key identifies **where a message goes, not who receives it**. It does not
+reveal your address, and it does not let anyone read messages sent through it.
+The realistic abuse is someone posting to the provider with your key to push
+spam into your inbox; the remedy is to rotate the key and turn on the provider's
+captcha. Check your provider's settings for a domain restriction too — both
+advertise spam controls, though the details are theirs to document, not mine.
 
 It stops address harvesting from your site and your repository. It does not make
 an address that is already published elsewhere private: for most academics the

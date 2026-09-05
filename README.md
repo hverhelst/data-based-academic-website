@@ -101,6 +101,10 @@ where a message goes, not who receives it, so it is safe in a public repository.
 
 `params.email` and `mydata.json`'s `email` are both optional: omit them and the
 homepage links to the contact page instead, and the CV carries only your website.
+
+The key can be injected from a repository secret rather than committed
+(`HUGO_PARAMS_CONTACT_KEY`), which keeps it out of git history — though not out
+of the deployed HTML, where it necessarily has to be.
 See [docs/contact-form.md](docs/contact-form.md).
 
 ## Demo
