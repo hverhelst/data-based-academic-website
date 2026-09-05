@@ -26,13 +26,19 @@
 
 {{ if not $key }}
   {{/* A missing key would otherwise render a form that silently posts nowhere,
-       which is worse than saying so. Warn at build time as well, because a
-       page nobody visits in preview would not show this notice to anyone. */}}
+       which is worse than rendering none. The build warning is the real signal,
+       since it reaches whoever is building; the on-page notice is for whoever
+       is looking at a preview and wondering where the form went.
+
+       In production the notice is suppressed: a site published before its key
+       was set should look like it simply has no form, not like it is broken. */}}
   {{ warnf "params.contact.key is not set — the contact form will not be rendered. Add the key from your form provider." }}
-  <div class="alert alert-warning" role="alert">
-    The contact form is not configured yet. Set <code>params.contact.key</code>
-    in the site configuration.
-  </div>
+  {{ if not hugo.IsProduction }}
+    <div class="alert alert-warning" role="alert">
+      The contact form is not configured yet. Set <code>params.contact.key</code>
+      in the site configuration. This notice is not shown in production builds.
+    </div>
+  {{ end }}
 {{ else }}
   {{ $action := "" }}
   {{ if eq $provider "web3forms" }}
