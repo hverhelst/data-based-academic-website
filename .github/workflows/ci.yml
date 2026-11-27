@@ -73,6 +73,23 @@ jobs:
           python scripts/enable_issue_forms.py --site-root "$scratch"
           python scripts/enable_issue_forms.py --site-root "$scratch" --check
 
+      # Dependabot bumps the action versions in a site's copy of the
+      # workflows. That must not count as drift, and a refresh must not
+      # revert it — but any other change to the copy must still be caught.
+      - name: Action version bumps are not drift
+        run: |
+          scratch="$(mktemp -d)"
+          mkdir -p "$scratch/data"
+          python scripts/enable_issue_forms.py --site-root "$scratch"
+          workflow="$scratch/.github/workflows/data-checks.yml"
+          sed -i 's|actions/checkout@[^ ]*|actions/checkout@v99|' "$workflow"
+          python scripts/enable_issue_forms.py --site-root "$scratch" --check
+          echo "# edited" >> "$workflow"
+          ! python scripts/enable_issue_forms.py --site-root "$scratch" --check
+          python scripts/enable_issue_forms.py --site-root "$scratch"
+          grep -q 'actions/checkout@v99' "$workflow"
+          python scripts/enable_issue_forms.py --site-root "$scratch" --check
+
   cv:
     name: Build the CV
     runs-on: ubuntu-latest

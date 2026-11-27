@@ -91,6 +91,9 @@ The same command refreshes them later, and `--check` reports drift — which is
 what the `data-checks` workflow runs, so a form that has fallen behind its
 schema fails a check instead of failing quietly at the moment you use it. Forms
 you write for your own sections are outside the manifest and are never touched.
+The version an action is pinned to (`actions/checkout@v7`) is ignored by
+`--check` and kept by a refresh, so Dependabot can bump it in your copy of the
+workflows without failing the check.
 
 ## Contact form
 
