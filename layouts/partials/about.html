@@ -8,15 +8,22 @@
               <h1 class="mb-0">{{ .Site.Params.firstName }}
                 <span class="text-primary">{{ .Site.Params.lastName }}</span>
               </h1>
-              <div class="subheading mb-5">{{ .Site.Params.address }} ·
+              <div class="subheading mb-5">{{ .Site.Params.address }}{{ with .Site.Params.email }} ·
                 {{/* Address is poisoned with "-remove-" in both the href and the
                      markup, so a scraper reading the raw HTML — or the tag-stripped
                      text — harvests a dead address. The hidden span keeps the
                      rendered text correct for a human, and resume.js strips the
                      marker from the href on load so the link still works. With JS
-                     disabled it degrades to a correct-looking, non-clickable address. */}}
-                <a class="protected-mail" href="mailto:{{ substr .Site.Params.email 0 5 }}-remove-{{ substr .Site.Params.email 5 }}">{{ substr .Site.Params.email 0 5 }}<span style="display:none">-remove-</span>{{ substr .Site.Params.email 5 }}</a>
-              </div>
+                     disabled it degrades to a correct-looking, non-clickable address.
+
+                     params.email is optional: a site that would rather not publish
+                     an address at all can leave it out and point at a contact form
+                     instead. substr would fail on the empty string, so the whole
+                     block is guarded rather than the expression. */}}
+                <a class="protected-mail" href="mailto:{{ substr . 0 5 }}-remove-{{ substr . 5 }}">{{ substr . 0 5 }}<span style="display:none">-remove-</span>{{ substr . 5 }}</a>
+              {{ end }}{{ with site.Params.contact }}{{ if .key }} ·
+                <a href="{{ default "/contact/" .page | relURL }}">{{ i18n "contact" }}</a>
+              {{ end }}{{ end }}</div>
             </div>
 
         </div>
