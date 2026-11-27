@@ -1,32 +1,41 @@
 [
   {
-    "school": "Riverside University",
-    "schoollink": "https://example.edu",
+    "school": "Technische Universiteit Delft",
+    "schoollink": "https://tudelft.nl",
     "degree": "Doctor of Philosophy",
     "major": "",
     "notes": "Cum Laude",
     "start": "2019-09-01",
     "end": "2024-01-18",
-    "thesis": "Adaptive analysis of thin structures",
-    "thesislink": "https://doi.org/10.0000/thesis",
-    "supervisors": "prof. dr. R. Chen",
+    "thesis": "Isogeometric analysis of wrinkling",
+    "thesislink": "https://doi.org/10.4233/uuid:0e4c3644-31a4-4157-983d-bd001d91b8ca",
+    "supervisors": "dr. M. Möller, dr. ir. J.H. Den Besten",
     "featured": true
   },
   {
-    "school": "Riverside University",
+    "school": "Technische Universiteit Delft",
+    "schoollink": "https://tudelft.nl",
     "degree": "Master of Science",
-    "major": "Applied Mathematics",
-    "notes": "with distinction",
-    "start": "2017-09-01",
-    "end": "2019-08-31",
+    "major": "Maritime Technology",
+    "notes": "Cum Laude, Honours",
+    "start": "2016-09-01",
+    "end": "2019-07-22",
+    "thesis": "Modelling Wrinkling Behaviour of Large Floating Thin Offshore Structures: An application of Isogeometric Structural Analysis for Post-Buckling Analyses",
+    "thesislink": "https://resolver.tudelft.nl/uuid:56c0cc91-643d-4817-9702-93fedce5fd78",
+    "supervisors": "prof. dr. ir. M.L. Kaminksi, dr. ir. F.J. Vermolen, dr. M. Möller, dr. ir. J.H. Den Besten",
     "featured": true
   },
   {
-    "school": "Southern Polytechnic",
-    "degree": "Bachelor of Science",
-    "major": "Mathematics",
-    "start": "2014-09-01",
-    "end": "2017-07-15",
-    "featured": false
+    "school": "Technische Universiteit Delft",
+    "schoollink": "https://tudelft.nl",
+    "degree": "Master of Science",
+    "major": "Applied Mathematics Technology",
+    "notes": "Cum Laude",
+    "start": "2016-09-01",
+    "end": "2019-07-22",
+    "thesis": "Modelling Wrinkling Behaviour of Large Floating Thin Offshore Structures: An application of Isogeometric Structural Analysis for Post-Buckling Analyses",
+    "thesislink": "https://resolver.tudelft.nl/uuid:56c0cc91-643d-4817-9702-93fedce5fd78",
+    "supervisors": "prof. dr. ir. M.L. Kaminksi, dr. ir. F.J. Vermolen, dr. M. Möller, dr. ir. J.H. Den Besten",
+    "featured": true
   }
 ]

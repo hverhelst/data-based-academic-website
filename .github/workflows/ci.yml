@@ -42,7 +42,7 @@ jobs:
           cd exampleSite/public
           grep -q "Error 404" 404.html
           test -f defense/index.html
-          grep -q 'id=grants' index.html
+          grep -q 'id=example' index.html
 
   data:
     name: Data and issue forms
@@ -90,8 +90,8 @@ jobs:
         env:
           SITE_ROOT: ${{ github.workspace }}/exampleSite
 
-      # The demo's Grants section has no LaTeX written for it anywhere; it
+      # The demo's "Example section" has no LaTeX written for it anywhere; it
       # reaches the PDF through the generic renderer alone. If that stops
       # working the CV still builds, just quietly missing a section.
       - name: A section declared only in data reaches the PDF
-        run: pdftotext -layout exampleSite/static/doc/CV.pdf - | grep -q "Grants & Funding"
+        run: pdftotext -layout exampleSite/static/doc/CV.pdf - | grep -q "Example section"

@@ -1,21 +1,23 @@
 [
   {
-    "date": "2026-05-04",
-    "title": "Paper accepted in the Journal of Applied Geometry",
-    "text": "Our work on adaptive refinement was accepted.",
-    "url": "https://doi.org/10.0000/example.2026",
+    "date": "2026-06-01",
+    "title": "New paper: adaptive isogeometric analysis of the Cahn–Hilliard equation",
+    "text": "Our paper on effective phase-field modelling of the Cahn–Hilliard equation in 2D and 3D, using a quasi-interpolation approach to adaptive isogeometric analysis with THB-splines, appeared in Computer Methods in Applied Mechanics and Engineering.",
+    "url": "https://doi.org/10.1016/j.cma.2026.118855",
     "featured": true
   },
   {
-    "date": "2026-02-11",
-    "title": "Invited talk at the Riverside Seminar",
-    "text": "On the numerical analysis of wrinkling.",
+    "date": "2026-03-22",
+    "title": "New paper: isogeometric coupling methods for partitioned multiphysics",
+    "text": "Together with J.-Y. Li, H. den Besten and M. Möller, our paper on IsoGeometric suitable coupling methods for partitioned multiphysics simulation, with application to fluid-structure interaction, appeared in Engineering with Computers.",
+    "url": "https://doi.org/10.1007/s00366-026-02299-0",
     "featured": true
   },
   {
-    "date": "2025-09-01",
-    "title": "Joined the Northern Institute of Technology",
-    "text": "Starting as an assistant professor.",
-    "featured": false
+    "date": "2026-02-01",
+    "title": "New preprint: adaptive isogeometric phase-field fracture with THB-splines",
+    "text": "Our new preprint on adaptive isogeometric analysis of high-order phase-field fracture based on THB-splines, with L. Greco and A. Reali, is now on arXiv.",
+    "url": "https://doi.org/10.48550/arXiv.2602.21685",
+    "featured": true
   }
 ]

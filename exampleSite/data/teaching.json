@@ -1,35 +1,50 @@
 [
   {
-    "degree": "BSc Applied Mathematics",
+    "degree": "Applied Mathematics",
+    "level": "MSc",
+    "course": "Computational Fluid Dynamics (WI4011-17)",
+    "university": "Technische Universiteit Delft",
+    "start": "2020-01-01",
+    "end": "2021-01-01",
+    "duration": "1 semester",
+    "url": "https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=49328&_NotifyTextSearch_",
+    "role": "Teaching Assistant",
+    "featured": true
+  },
+  {
+    "degree": "Civil, Mechanical and Aerospace Engineering",
     "level": "BSc",
-    "course": "Numerical Methods I",
-    "university": "Northern Institute of Technology",
-    "start": "2025-09-01",
-    "end": "2026-07-01",
-    "duration": "yearly",
+    "course": "Numerical Methods for Differential Equations (WI3097TU/TW3730TU/CTB2400)",
+    "university": "Technische Universiteit Delft",
+    "start": "2020-01-01",
+    "end": "2023-01-01",
+    "duration": "6 quarters",
+    "url": "https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55192&_NotifyTextSearch_",
+    "role": "Digital Teaching Assistant",
+    "featured": true
+  },
+  {
+    "degree": "Maritime Technology",
+    "level": "MSc",
+    "course": "Fluid-Structure Interaction in Marine Structures (MT44090)",
+    "university": "Technische Universiteit Delft",
+    "start": "2020-01-01",
+    "end": "2022-01-01",
+    "duration": "2 quarters",
+    "url": "https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55192&_NotifyTextSearch_",
     "role": "Lecturer",
     "featured": true
   },
   {
-    "degree": "MSc Applied Mathematics",
-    "level": "MSc",
-    "course": "Finite Element Analysis",
-    "university": "Riverside University",
-    "start": "2022-02-01",
-    "end": "2024-06-30",
-    "role": "Teaching assistant",
-    "featured": true,
-    "duration": "2 quarters"
-  },
-  {
-    "degree": "PhD programme",
-    "level": "PhD",
-    "course": "Advanced Topics in Geometry",
-    "university": "Riverside University",
-    "start": "2023-01-01",
-    "end": "2023-03-31",
-    "role": "Guest lecturer",
-    "featured": false,
-    "duration": "1 quarter"
+    "degree": "Maritime Technology",
+    "level": "BSc",
+    "course": "1st Integration Project (MT1453)",
+    "university": "Technische Universiteit Delft",
+    "start": "2015-01-01",
+    "end": "2016-01-01",
+    "duration": "1 semesters",
+    "url": "https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=39839",
+    "role": "CAD Software Assistant",
+    "featured": true
   }
 ]

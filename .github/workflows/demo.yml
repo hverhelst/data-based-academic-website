@@ -30,6 +30,18 @@ jobs:
           sudo dpkg -i "${{ runner.temp }}/hugo.deb"
       - uses: actions/configure-pages@v5
         id: pages
+      # The demo advertises a CV link in its navigation, so it has to build the
+      # PDF too; without this the link 404s. It also exercises the LaTeX path
+      # against the demo's data on every deploy.
+      - name: Install TeX Live (LuaLaTeX)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-luatex texlive-latex-extra texlive-science texlive-fonts-recommended
+      - name: Compile CV
+        run: bash compile_CV.sh
+        env:
+          SITE_ROOT: ${{ github.workspace }}/exampleSite
       # The demo is served from a repository subpath, not an apex domain, so
       # baseURL has to come from the Pages configuration rather than hugo.toml.
       - name: Build

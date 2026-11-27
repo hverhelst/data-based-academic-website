@@ -6,6 +6,10 @@
   <title>{{ .Site.Title }} | {{ .Title }}</title>
   {{ $desc := cond .IsHome site.Params.meta.description (or .Description site.Params.meta.description) }}
   <meta name="description" content="{{ $desc }}">
+  {{/* For a demo or staging copy living on the same domain as the real
+       site: without this the two compete in search results as duplicate
+       content, and the copy can outrank the original. */}}
+  {{ if site.Params.meta.noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
 
   {{ $preview_image := .Resources.GetMatch "site_preview" }}
   {{if $preview_image }}

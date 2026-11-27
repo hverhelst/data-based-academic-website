@@ -1,0 +1,16 @@
+[
+  {
+    "title": "This section has no template anywhere in the theme",
+    "subtitle": "Rendered by partials/sections/generic.html",
+    "description": "It exists because `data/sections.json` lists an entry with `style: \"generic\"` and names which fields to show. No Go template and no LaTeX were written for it.",
+    "year": "2026",
+    "url": "https://github.com/hverhelst/data-based-academic-website/blob/main/docs/adding-a-section.md",
+    "details": "Adding a section of your own takes two files: an array of records in `data/<name>.json`, and one entry in `data/sections.json`. Everything else — a page of its own, a JSON Schema, an issue form, a bespoke renderer — is optional."
+  },
+  {
+    "title": "It appears in the generated CV too",
+    "subtitle": "Rendered by prettyprintGeneric in autoCV.tex",
+    "description": "The CV walks the same `data/sections.json` the website does, so a section added as data reaches the PDF without any LaTeX being written. Set `inCV: false` to leave one out.",
+    "year": "2026"
+  }
+]

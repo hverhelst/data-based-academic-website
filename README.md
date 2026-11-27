@@ -109,10 +109,13 @@ See [docs/contact-form.md](docs/contact-form.md).
 
 ## Demo
 
-`exampleSite/` is a complete site on fictional data, covering every preset and
-every enum branch. It also demonstrates the two less obvious features: a
-standalone page (`content/defense/`) that nothing links unless you ask, and a
-`Grants & Funding` section with no template anywhere in the theme.
+`exampleSite/` is a complete site, built from a trimmed subset of the theme
+author's real data so the layout is shown with realistic content. It covers
+every preset and every enum branch the section templates dispatch on, and
+demonstrates the two less obvious features: a standalone page
+(`content/defense/`) that nothing links unless you ask, and an `Example
+section` with no template anywhere in the theme — not in Go, not in LaTeX —
+which appears on the homepage, on its own page, and in the CV.
 
 ```bash
 hugo --source exampleSite --themesDir ../.. server

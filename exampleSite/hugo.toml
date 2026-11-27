@@ -3,40 +3,38 @@
 # Build it from the theme's root with:
 #     hugo --source exampleSite --themesDir ../..
 #
-# Everything below is site-owned. The layouts, translations, CSS and the
-# section renderers all come from the theme; this file plus data/ is the whole
-# of what a site actually has to provide.
+# The name, photo and entries below are a trimmed subset of the theme author's
+# real site, so the demo shows the layout with realistic data rather than
+# filler. Everything here is site-owned: the layouts, translations, CSS and the
+# section renderers all come from the theme.
 theme = "data-based-academic-website"
-baseURL = "https://example.org/"
+baseURL = "https://hugoverhelst.nl/data-based-academic-website/"
 locale = "en"
-title = "Alex Rivera"
+title = "Hugo Verhelst"
 dateFormat = "January 2, 2006"
 disableKinds = ["taxonomy", "term"]
 
 [params]
-address = "Riverside, Elsewhere"
-# email is deliberately absent: the contact form replaces it.
-firstName = "Alex"
-lastName = "Rivera"
-profileImage = "img/avatar.svg"
+address = "Eindhoven, The Netherlands"
+firstName = "Hugo"
+lastName = "Verhelst"
+profileImage = "img/pasfotoTU.jpg"
 showSocializations = true
 CVlink = "doc/CV.pdf"
+showQr = false
+
+# No email: the demo shows the contact form instead, which is the arrangement
+# the theme recommends for a published academic site.
 
 # Sections live in data/sections.json, not here — the LaTeX CV reads the same
 # file, which is what stops the site and the PDF from drifting apart.
 
-# A contact form instead of a published address. The key identifies where a
-# message goes, not who receives it, so it is safe in a public repository.
-# Swap provider to "formspree" and put the form id in key to use that instead.
 [params.contact]
 provider = "web3forms"
 key = "00000000-0000-0000-0000-000000000000"   # demo placeholder, not a real key
 subject = "Message from the demo site"
-note = "I read everything; replies may take a few days."
+note = "This is the theme's demo, so nothing sent here is delivered anywhere."
 
-# Pages that are reachable but deliberately not part of the section flow.
-# Drop this block and /defense/ is still served, just unlinked — which is the
-# usual reason for having such a page at all.
 [[params.extraPages]]
 label = "Contact"
 url = "/contact/"
@@ -46,24 +44,37 @@ label = "Defense"
 url = "/defense/"
 
 [[params.handles]]
+name = "LinkedIn"
+link = "https://www.linkedin.com/in/hugo-verhelst/"
+icon = "linkedin-in"
+
+[[params.handles]]
 name = "GitHub"
-link = "https://github.com/example"
+link = "https://github.com/hverhelst/"
 icon = "github"
 
 [[params.handles]]
 name = "ORCID"
-link = "https://orcid.org/0000-0002-1825-0097"
+link = "https://orcid.org/0000-0001-8677-862X"
 icon = "orcid"
 
 [[params.handles]]
-name = "LinkedIn"
-link = "https://www.linkedin.com/in/example/"
-icon = "linkedin-in"
+name = "Google Scholar"
+link = "https://scholar.google.com/citations?user=7cTDjzYAAAAJ&hl=en&oi=ao"
+icon = "google-scholar"
+
+[[params.handles]]
+name = "BlueSky"
+link = "https://bsky.app/profile/hugoverhelst.nl"
+icon = "bluesky"
 
 [params.meta]
-description = "Demo site for the Data-based Academic Website theme"
-author = "Alex Rivera"
-favicon = false
+description = "Demo site for the Data-based Academic Website Hugo theme"
+author = "Hugo Verhelst"
+favicon = true
+# The demo sits on the same domain as the real site. Without this the two
+# compete in search as duplicate content, and the demo can outrank the original.
+noindex = true
 
 [markup.goldmark.renderer]
 unsafe = true

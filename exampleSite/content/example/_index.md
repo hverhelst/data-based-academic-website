@@ -1,5 +1,5 @@
 ---
-title: "Grants & Funding"
+title: "Example section"
 weight: 10
 sitemap:
   priority: 0.6

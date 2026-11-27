@@ -1,40 +1,52 @@
 [
   {
-    "name": "International Conference on Applied Geometry",
-    "location": "Highvalley",
-    "title": "Adaptive refinement for thin-shell analysis",
-    "start": "2026-06-15",
-    "end": "2026-06-19",
-    "url": "https://example.org/icag2026",
-    "details": "Plenary lecture opening the numerical-methods track.",
-    "featured": true,
-    "invited": true
-  },
-  {
-    "name": "Riverside Seminar Series",
-    "location": "Riverside",
-    "title": "On the numerical analysis of wrinkling",
-    "start": "2026-02-11",
-    "end": "",
-    "featured": true,
-    "invited": true
-  },
-  {
-    "name": "European Congress on Computational Mechanics",
-    "location": "Lisbon",
-    "title": "A phase-field model for thin structures",
-    "start": "2025-07-07",
-    "end": "2025-07-11",
+    "name": "17th World Congress on Computational Mechanics & 10th European Congress on Computational Methods in Applied Sciences and Engineering (WCCM-ECCOMAS 2026)",
+    "location": "Munich, Germany",
+    "title": "Towards Uncertainty Quantification in Phase-field Fracture: Using Gradient-Preserving Operator Inference",
+    "start": "2026-07-19",
+    "end": "2026-07-24",
+    "url": "https://wccm-eccomas2026.org/",
     "featured": true,
     "invited": false
   },
   {
-    "name": "Workshop on Isogeometric Methods",
-    "location": "Alpine",
-    "title": "Quadrature for trimmed geometries",
-    "start": "2024-09-02",
-    "end": "2024-09-04",
-    "featured": false,
+    "name": "8th ECCOMAS Young Investigators Conference and PhD Olympiad 2025 (YIC 2025)",
+    "location": "Pescara, Italy",
+    "title": "ECCOMAS PhD Olympiad: Isogeometric Analysis of Wrinkling",
+    "start": "2025-09-17",
+    "end": "2025-09-19",
+    "url": "https://yic2025.cimne.com/",
+    "featured": true,
+    "invited": false
+  },
+  {
+    "name": "Biezeno Lecture, 27th Engineering Mechanics Symposium",
+    "location": "Papendal, Arnhem, The Netherlands",
+    "title": "Isogeometric Analysis of Wrinkling",
+    "start": "2024-10-23",
+    "end": "",
+    "url": "https://engineeringmechanics.nl/koiter-lecture-biezeno-award/",
+    "featured": true,
+    "invited": true
+  },
+  {
+    "name": "PDESoft 2024",
+    "location": "Cambridge, United Kingdom",
+    "title": "G+Smo: Geometry + Simulation Modules for Isogeometric Analysis",
+    "start": "2024-07-01",
+    "end": "2024-07-03",
+    "url": "https://pdesoft.org/",
+    "featured": true,
+    "invited": false
+  },
+  {
+    "name": "9th European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS)",
+    "location": "Lisbon, Portugal",
+    "title": "A unified framework for advanced spline constructions in Isogeometric Analysis",
+    "start": "2024-06-03",
+    "end": "2024-06-07",
+    "url": "https://www.eccomas2024.org/frontal/default.asp",
+    "featured": true,
     "invited": false
   }
 ]

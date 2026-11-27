@@ -1,77 +1,85 @@
 [
   {
-    "cite-key": "",
-    "entry-type": "thesis",
+    "cite-key": "Verhelst2025b",
+    "entry-type": "unpublished",
     "description": {
-      "title": "Adaptive analysis of thin structures",
-      "author": "A. Rivera",
-      "date": "2024-01-18",
-      "url": "https://doi.org/10.0000/thesis",
-      "image": "media/thesis.png",
-      "imageCaption": "Cover art: a wrinkled membrane.",
-      "school": "Riverside University",
-      "degree": "Doctor of Philosophy",
-      "abstract": "A study of adaptive discretisations for thin structures.",
-      "year": "2024"
-    },
-    "featured": true
-  },
-  {
-    "cite-key": "Rivera2026",
-    "entry-type": "article",
-    "description": {
-      "author": "A. Rivera and R. Chen",
-      "title": "Adaptive refinement for shells",
-      "journal": "Journal of Applied Geometry",
-      "volume": "12",
-      "issue": "3",
-      "pages": "215--240",
-      "year": "2026",
-      "url": "https://doi.org/10.0000/example.2026",
-      "image": "media/rivera2026.png",
-      "imageCaption": "Refined mesh around a fold.",
-      "abstract": "We propose an adaptive scheme."
-    },
-    "featured": true
-  },
-  {
-    "cite-key": "Rivera2025",
-    "entry-type": "inproceeding",
-    "description": {
-      "author": "A. Rivera and M. Bianchi",
-      "title": "Quadrature for trimmed geometries",
-      "booktitle": "Proceedings of the Workshop on Isogeometric Methods",
       "year": "2025",
-      "pages": "44--51",
-      "url": "https://doi.org/10.0000/proc.2025"
+      "title": "Isogeometric multi-patch shell analysis using the Geometry + Simulation Modules",
+      "author": "H.M. Verhelst, A. Mantzaflaris, M. Möller",
+      "eprint": "arXiv:2508.10648",
+      "url": "https://doi.org/10.48550/arXiv.2508.10648",
+      "abstract": "Isogeometric Analysis (IGA) bridges Computer-Aided Design (CAD) and Finite Element Analysis (FEA) by employing splines as a common basis for geometry and analysis. One of the advantages of IGA is in the realm of thin shell analysis: due to the arbitrary continuity of the spline basis, Kirchhoff–Love shells can be modeled without the need to introduce unknowns for the mid-plane rotations, leading to a reduction in the number of unknowns. In this paper, we provide the background of an implementation of Isogeometric Kirchhoff–Love shells within the Geometry + Simulation Modules (G+Smo). This paper accompanies multiple previous publications and elaborates on the design of the software used in these papers, rather than the novelty of the methods presented therein. The presented implementation provides patch coupling via penalty methods and unstructured splines, goal-oriented error estimators, several algorithms for structural analysis and advanced algorithms for the modeling of wrinkling in hyperelastic membranes. These methods are all contained in three new modules in G+Smo: a module for Kirchhoff–Love shells, a module for structural analysis, and a module for unstructured spline constructions. As motivated in this paper, the modules are implemented to be compatible with future developments. For example, by providing base implementations of material laws, by using black-box functions for the structural analysis module, or by providing a standardized approach for the implementation of unstructured spline constructions. Overall, this paper demonstrates that the new modules contribute to a versatile ecosystem for the modeling of multi-patch shell problems through fast off-the-shelf solvers with a simple interface, designed to be extended in future research."
     },
     "featured": true
   },
   {
-    "cite-key": "Rivera2024",
+    "cite-key": "Ji2024",
     "entry-type": "incollection",
     "description": {
-      "author": "A. Rivera",
-      "title": "Thin-shell formulations",
-      "booktitle": "Advances in Computational Mechanics",
-      "editor": "L. Marchetti",
-      "series": "Lecture Notes in Applied Mathematics",
-      "publisher": "Riverside Press",
-      "year": "2024",
-      "pages": "101--130",
-      "url": "https://doi.org/10.0000/chapter.2024"
+      "author": "Y. Ji, M. Möller, H. M. Verhelst",
+      "title": "Design Through Analysis",
+      "pages": "303-368",
+      "booktitle": "Fluids Under Control",
+      "publisher": "Springer International Publishing",
+      "year": "2023",
+      "editor": "T. Bodnár, G. P. Galdi, Š. Nečasová",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-47355-5_5",
+      "image": "media/Ji2024.png",
+      "imageCaption": "Gallery of volumetric spline parameterizations coloured by scaled Jacobian.",
+      "abstract": "Numerical simulations of physical systems have become an indispensable third pillar in modern computational sciences and engineering (CSE) complementing theoretical and experimental analysis. Most numerical methods in use today like the finite element method (FEM), the boundary element method (BEM), the finite volume method (FVM), and the finite difference method (FDM) have their origin many decades ago when computers delivered only a marginal fraction of their today's performance and were moreover a scarcely available resource, and CSE was at its infancy. It is therefore no surprise that all aforementioned numerical methods were originally designed as validation tools to be utilized deliberately in one of the final stages of the entire design and analysis workflow and not as a repeatedly queried in-the-loop tool."
     },
     "featured": false
   },
   {
-    "cite-key": "Rivera2026a",
-    "entry-type": "unpublished",
+    "cite-key": "Verhelst2021",
+    "entry-type": "inproceeding",
     "description": {
-      "author": "A. Rivera and S. Lindqvist",
-      "title": "A phase-field model for thin structures",
-      "year": "2026",
-      "eprint": "arXiv:2601.00001",
-      "url": "https://arxiv.org/abs/2601.00001"
+      "author": "H. M. Verhelst, M. Möller, J. H. Den Besten, F. J. Vermolen, & M. L. Kaminski",
+      "title": "Equilibrium Path Analysis Including Bifurcations with an Arc-Length Method Avoiding A Priori Perturbations.",
+      "booktitle": "Numerical Mathematics and Advanced Applications ENUMATH 2019",
+      "year": "2021",
+      "editor": "F.J. Vermolen, C. Vuik",
+      "volume": "139",
+      "series": "Lecture Notes in Computational Science and Engineering",
+      "publisher": "Springer, Cham",
+      "url": "https://doi.org/10.1007/978-3-030-55874-1_110",
+      "image": "media/Verhelst2021.png",
+      "imageCaption": "Equilibrium path of a buckling column, with an inset of the deformed configuration.",
+      "abstract": "Wrinkling or pattern formation of thin (floating) membranes is a phenomenon governed by buckling instabilities of the membrane. For (post-) buckling analysis, arc-length or continuation methods are often used with a priori applied perturbations in order to avoid passing bifurcation points when traversing the equilibrium paths. The shape and magnitude of the perturbations, however, should not affect the post-buckling response and hence should be chosen with care. In this paper, our primary focus is to develop a robust arc-length method that is able to traverse equilibrium paths and post-bifurcation branches without the need for a priori applied perturbations. We do this by combining existing methods for continuation, solution methods for complex roots in the constraint equation, as well as methods for bifurcation point indication and branch switching. The method has been benchmarked on the post-buckling behaviour of a column, using geometrically non-linear isogeometric Kirchhoff-Love shell element formulations. Excellent results have been obtained in comparison to the reference results, from both bifurcation point and equilibrium path perspective."
+    },
+    "featured": false
+  },
+  {
+    "cite-key": "Verhelst2021a",
+    "entry-type": "article",
+    "description": {
+      "publisher": "Elsevier",
+      "journal": "Computer-Aided Design",
+      "volume": "139",
+      "year": "2021",
+      "title": "Stretch-Based Hyperelastic Material Formulations for Isogeometric Kirchhoff–Love Shells with Application to Wrinkling",
+      "author": "H. M. Verhelst, M. Möller, J. H. Den Besten, A. Mantzaflaris, & M. L. Kaminski",
+      "pages": "103075",
+      "url": "https://doi.org/10.1016/j.cad.2021.103075",
+      "image": "media/Verhelst2021a.png",
+      "imageCaption": "Out-of-plane displacement contours showing tension wrinkling in a stretched thin sheet.",
+      "abstract": "Modelling nonlinear phenomena in thin rubber shells calls for stretch-based material models, such as the Ogden model which conveniently utilizes eigenvalues of the deformation tensor. Derivation and implementation of such models have been already made in Finite Element Methods. This is, however, still lacking in shell formulations based on Isogeometric Analysis, where higher-order continuity of the spline basis is employed for improved accuracy. This paper fills this gap by presenting formulations of stretch-based material models for isogeometric Kirchhoff–Love shells. We derive general formulations based on explicit treatment in terms of derivatives of the strain energy density functions with respect to principal stretches for (in)compressible material models where determination of eigenvalues as well as the spectral basis transformations is required. Using several numerical benchmarks, we verify our formulations on invariant-based Neo-Hookean and Mooney–Rivlin models and with a stretch-based Ogden model. In addition, the model is applied to simulate collapsing behaviour of a truncated cone and it is used to simulate tension wrinkling of a thin sheet."
+    },
+    "featured": false
+  },
+  {
+    "cite-key": "",
+    "entry-type": "thesis",
+    "description": {
+      "title": "Isogeometric Analysis of Wrinkling",
+      "author": "H. M. Verhelst",
+      "date": "2023-12-22",
+      "url": "https://doi.org/10.4233/uuid:0e4c3644-31a4-4157-983d-bd001d91b8ca",
+      "image": "media/PhDthesis.png",
+      "imageCaption": "Cover art: simulated wrinkling field of a stretched thin membrane.",
+      "school": "Technische Universiteit Delft",
+      "degree": "Doctor of Philosophy",
+      "abstract": "Wrinkles are ubiquitous in the world around us. In our daily lives, we encounter wrinkles in various forms, whether in our clothes or on our skin. Wrinkles emerge as a result of a delicate interplay between bending, membrane, and foundation stiffness contributions within membranes. While experimental investigations provide insights into the physics underlying wrinkling, numerical investigations find their purpose in the design, analysis, and optimisation of membranes subjected to wrinkling. Nevertheless, the numerical simulation of membrane wrinkling presents several challenges. Firstly, wrinkling constitutes a buckling phenomenon in membranes with low bending stiffness. Wrinkles have the potential to evolve into folds, creases, or other wrinkling patterns as loads or displacements increase. Secondly, the wavelengths of wrinkling can be orders of magnitude smaller than the overall geometry, requiring a small resolution of the numerical simulation and hence increasing computational costs. Overall, the question arises of how to design robust and accurate numerical models for the analysis of wrinkled membranes. This dissertation is subdivided into four parts and aims to provide answers to this question. The first theme considers hyperelastic material modelling, with a focus on developing wrinkling models under large strains. The shell model employed in this dissertation is based on the isogeometric analysis paradigm. Specifically, the Kirchhoff–Love shell model is used, which leverages the higher-order continuity of underlying spline spaces. Chapter 3 extends hyperelastic material formulations to stretch-based materials, enabling the use of the isogeometric analysis paradigm for rubber-like shells. Since the modelling of wrinkling patterns imposes physical scales limiting element mesh sizes, chapter 4 introduces a hyperelastic isogeometric membrane element that incorporates an implicit wrinkling model, thus avoiding explicit modelling of wrinkling amplitudes. The second theme addresses adaptive methods. On the one hand, spatial adaptivity enhances the local detail in a numerical simulation. Chapter 5 presents an adaptive isogeometric analysis framework based on intuitive goal functions, such as wrinkling amplitudes, to guide adaptive meshing routines. On the other hand, temporal or quasi-temporal adaptivity serves to enhance the efficiency of dynamic or quasi-static simulations. Chapter 6 introduces an adaptive parallel arc-length method. The method's adaptivity arises as a by-product of parallelisation efforts aimed at reducing computational times for quasi-static simulations. The advantage of the smoothness inherent in the spline spaces used in isogeometric analysis is limited to simple topologies. To benefit from this smoothness in complex geometries, the third theme of this dissertation focuses on complex domain modelling. Chapter 7 presents a qualitative and quantitative comparison of unstructured spline constructions for multi-patch modelling using isogeometric analysis. This chapter offers insights and suggestions for future developments related to unstructured spline constructions. The final theme of this dissertation concerns the reproducibility of the developed methods. In this section, design considerations are presented for an open-source software library, along with small examples, aimed at ensuring easy reproducibility and supporting future research in the three themes mentioned earlier. In summary, this dissertation offers a wide range of methods for the isogeometric analysis of structural instabilities in thin-walled structures, including the modelling of wrinkling. The concepts developed in terms of hyperelasticity expand the applicability of wrinkling models to encompass large strains. The concepts developed in terms of adaptivity provide intuitive error estimators that drive local refinement in space, as well as a novel continuation method that eliminates the inherently serial arc-length methods. Through the use of unstructured splines, complex domains become accessible for the analysis of structural stabilities. By creating an open-source, forward-compatible software library, these concepts are made available for future developments in the field of isogeometric analysis of wrinkling."
     },
     "featured": true
   }
