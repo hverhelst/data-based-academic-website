@@ -21,7 +21,12 @@ third-party service that mails the message on. Two are supported.
    note     = "I read everything."         # optional line above the form
    ```
 
-3. Add a page for it:
+   Put any introductory prose in `note`, not in the page body. The note renders
+   immediately above the form, so it appears only when the form does; prose in
+   the body would promise a form that is not there whenever the key is unset —
+   on a site published before its key was added, for instance.
+
+3. Add a page for it, with nothing in the body but the shortcode:
 
    ```markdown
    ---
