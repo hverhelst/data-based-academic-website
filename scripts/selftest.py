@@ -283,6 +283,24 @@ def main():
     os.chdir(site.root)
 
     templates = issue_form.load_templates()
+    # GitHub drops a form from the issue chooser, without any message, if one
+    # of these is not a string. YAML turns an unquoted `2026-06-01` into a
+    # date, so a placeholder like that has to be quoted.
+    for stem, template in sorted(templates.items()):
+        for element in template["body"]:
+            attributes = element.get("attributes") or {}
+            for key in ("label", "description", "placeholder", "value", "render"):
+                check(
+                    key not in attributes or isinstance(attributes[key], str),
+                    f"{stem}: {element.get('id', element['type'])} {key} is "
+                    f"{attributes.get(key)!r}, not a string — quote it",
+                )
+            for option in attributes.get("options", []):
+                label = option.get("label") if isinstance(option, dict) else option
+                check(
+                    isinstance(label, str),
+                    f"{stem}: {element.get('id')} option {label!r} is not a string",
+                )
     check(
         set(templates) == set(CASES),
         f"untested templates: {sorted(set(templates) ^ set(CASES))}",
